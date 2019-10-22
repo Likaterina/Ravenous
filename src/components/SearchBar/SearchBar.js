@@ -8,6 +8,27 @@ const sortByOptions = {
 }
 
 class SearchBar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            term: '',
+            locations: '',
+            sortBy: 'best_match'
+        }
+        this.sortByOptions = {
+            'Best Match': 'best_match',
+            'Highest Rated': 'rating',
+            'Most Reviewed': 'review_count'
+          };
+    }
+
+    getSortByClass(sortByOption) {
+        if (this.state.sortBy == sortByOption) {
+            return 'active'
+        } else {
+            return ''
+        }
+    }
     renderSortByOptions() {
         return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption]
